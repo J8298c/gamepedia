@@ -1,0 +1,2 @@
+# gamepedia
+browse classic games
