@@ -6,7 +6,7 @@ const gameSchema = new Schema({
     year: Number,
     description: String,
     picture: String,
-    postDate: {type: Date, default: Date.now}
+    postDate: { type: Date, default: Date.now}
 });
 
 const Game = mongoose.model('Game', gameSchema);

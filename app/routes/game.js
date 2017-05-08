@@ -1,7 +1,7 @@
-import Game from '../models/game';
+import Game from '../models/games';
 
-const getGames = (req, res)=>{
-    Game.find(null, null, {sort: {postDate:1}}, (err, games)=>{
+const getGames = (req, res) => {
+    Game.find(null, null, { sort: {postDate: 1}}, (err, games)=>{
         if(err){
             res.send(err);
         }
@@ -9,7 +9,7 @@ const getGames = (req, res)=>{
     });
 }
 
-const getGame = (req, res) => {
+const getGame = (req, res)=>{
     const {id} = req.params;
     Game.findById(id, (err, game)=>{
         if(err){
@@ -19,9 +19,10 @@ const getGame = (req, res) => {
     });
 }
 
-const postGame = (req, res) => {
+const postGame = (req, res)=>{
     let game = Object.assign(new Game(), req.body);
-    game.save(err => {
+
+    game.save(err =>{
         if(err){
             res.send(err);
         }
@@ -29,16 +30,16 @@ const postGame = (req, res) => {
     });
 };
 
-const deleteGame = (req, res)=> {
+const deleteGame = (req, res) => {
     Game.remove(
         {_id: req.params.id},
-        err => {
+        err=>{
             if(err){
                 res.send(err);
             }
-            res.json({message: 'successfully deleted'});
+            res.json({ message: 'successfully deleted'});
         }
     );
 };
 
-export {getGames, getGame, postGame, deleteGame};
+export { getGames, getGame, postGame, deleteGame};
